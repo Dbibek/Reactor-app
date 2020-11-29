@@ -1,4 +1,4 @@
-## Demo Link:https://reactor-ecommerce-app.netlify.app/shirts
+## Demo Link:https://reactor-ecommerce-app.netlify.app/
 
 # Getting Started with Create React App
 
