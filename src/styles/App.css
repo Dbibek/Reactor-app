@@ -1,0 +1,26 @@
+.App {
+  text-align: center;
+}
+
+.main-container {
+  text-align: center;
+  background-color: rgb(255, 251, 251);
+}
+.data-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 1rem;
+}
+
+.product-div {
+  border: 1px solid black;
+  width: 12rem;
+  height: 12rem;
+  margin: 1rem;
+  background: rgb(139, 232, 255);
+  text-align: left;
+  padding: 1rem;
+  box-shadow: 10px 10px 5px #aaaaaa;
+}
