@@ -1,6 +1,7 @@
 import Axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Route, BrowserRouter as Router, Link, Switch } from "react-router-dom";
+import Button from "./components/Button";
 
 import Loading from "./components/Loading";
 import { Assessories } from "./pages/Assessories";
@@ -15,13 +16,20 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    function timer(){ setTimeout(() => {
       setLoading(false);
-    }, 1000);
-
-    Axios.get(`${apiUrl}/${type}`)
-      .then((Response) => setData(Response.data))
-      .catch((err) => console.log(err));
+    }, 1000)}
+    async function getProduct() {
+      try {
+        const response = await Axios.get(`${apiUrl}/${type}`);
+        console.log(response);
+        setData(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+      timer()
+    }
+    getProduct();
     return () => clearTimeout(timer);
   }, [type]);
   return (
@@ -35,15 +43,16 @@ function App() {
               </Link>
             </div>
             <Link to="/jackets">
-              <button onClick={() => setType("jackets")}>Jackets</button>
+              <Button onClick={() => setType("jackets")} name="Jackets" />
             </Link>
             <Link to="/shirts">
-              <button onClick={() => setType("shirts")}>Shirts</button>
+              <Button onClick={() => setType("shirts")} name="Shirts" />
             </Link>
             <Link to="/accessories">
-              <button onClick={() => setType("accessories")}>
-                Accessories
-              </button>
+              <Button
+                onClick={() => setType("accessories")}
+                name="Accessories"
+              />
             </Link>
           </header>
           <main className="main">
